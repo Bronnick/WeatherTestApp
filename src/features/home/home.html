@@ -18,4 +18,8 @@
   @if (weather(); as weather) {
     <app-weather-card [weather]="weather" />
   }
+
+  @if (forecast().length) {
+    <app-forecast-list [days]="forecast()" />
+  }
 </div>

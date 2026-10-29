@@ -68,6 +68,44 @@ export interface Sys {
   sunset: number
 }
 
+export type DailyForecast = {
+  day: string;
+  date: string;
+  condition: WeatherCondition;
+  description: string;
+  tempMin: number;
+  tempMax: number;
+};
+
+export interface ForecastRoot {
+  cod: string
+  message: number
+  cnt: number
+  list: ForecastItem[]
+  city: ForecastCity
+}
+
+export interface ForecastItem {
+  dt: number
+  main: Main
+  weather: Weather[]
+  clouds: Clouds
+  wind: Wind
+  visibility?: number
+  pop: number
+  dt_txt: string
+}
+
+export interface ForecastCity {
+  id: number
+  name: string
+  coord: Coord
+  country: string
+  population?: number
+  timezone: number
+  sunrise: number
+  sunset: number
+}
 
 export type WeatherParams = {
   city: string;
