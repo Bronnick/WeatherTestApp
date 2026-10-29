@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { Weather } from '../../types/weather';
+import { OpenWeatherResponse } from '../../types/weather';
 import { WeatherCard } from '../weather/weather-card/weather-card';
 
-const sampleWeather: Weather = {
+const sampleWeather: OpenWeatherResponse = {
   city: 'London',
   country: 'GB',
   condition: 'clear',

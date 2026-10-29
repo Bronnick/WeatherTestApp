@@ -1,5 +1,5 @@
 import { Component, computed, input } from '@angular/core';
-import { Weather, WeatherCondition } from '../../../types/weather';
+import { OpenWeatherResponse, WeatherCondition } from '../../../types/weather';
 import { WeatherIcon } from '../../../shared/weather-icon/weather-icon';
 
 const conditionStyles: Record<WeatherCondition, string> = {
@@ -16,7 +16,7 @@ const conditionStyles: Record<WeatherCondition, string> = {
   templateUrl: './weather-card.html',
 })
 export class WeatherCard {
-  weather = input.required<Weather>();
+  weather = input.required<OpenWeatherResponse>();
 
   protected styles = computed(() => conditionStyles[this.weather().condition]);
 }
