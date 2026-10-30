@@ -1,14 +1,14 @@
 @if (weather(); as weather) {
   <div class="card shadow-xl {{ styles() }}">
     <div class="card-body items-center text-center">
-      <h2 class="card-title text-2xl">{{ weather.city }}, {{weather.country }}</h2>
+      <h2 class="card-title text-2xl">{{weather.city }}, {{weather.country}}</h2>
 
       <div class="size-20">
         <app-weather-icon [condition]="weather.condition" />
       </div>
 
-      <div class="text-6xl font-bold">{{ weather.temperature }}&deg;C</div>
-      <p class="text-lg capitalize">{{ weather.description }}</p>
+      <div class="text-6xl font-bold">{{weather.temperature}}&deg;C</div>
+      <p class="text-lg capitalize">{{weather.description}}</p>
 
       <div class="flex gap-8 mt-4">
         <div>
@@ -17,7 +17,7 @@
         </div>
         <div>
           <p class="text-sm opacity-80">Wind</p>
-          <p class="text-xl font-semibold">{{weather.windSpeed }} m/s</p>
+          <p class="text-xl font-semibold">{{weather.windSpeed}} m/s</p>
         </div>
       </div>
     </div>
