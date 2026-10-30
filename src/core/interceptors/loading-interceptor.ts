@@ -29,7 +29,6 @@ export const loadingInterceptor: HttpInterceptorFn = (req, next) => {
   if (cachedResponse) {
     const isExpired = (Date.now() - cachedResponse.timestamp) > CACHE_DURATION_MS
     if (!isExpired) {
-      console.log("cache: " + cacheKey)
       return of(cachedResponse.response)
     } else {
       cache.delete(cacheKey)
@@ -39,10 +38,15 @@ export const loadingInterceptor: HttpInterceptorFn = (req, next) => {
   return next(req).pipe(
     tap(response => {
       if (response instanceof HttpResponse) {
-        cache.set(cacheKey, {
+        const entry = {
           response,
           timestamp: Date.now()
-        })
+        }
+        cache.set(cacheKey, entry)
+        setTimeout(() => {
+          if(cache.get(cacheKey) === entry)
+          cache.delete(cacheKey)
+        }, CACHE_DURATION_MS)
       }
     })
   )
